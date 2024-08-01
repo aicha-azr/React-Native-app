@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, Image } from 'react-native'
 
 import styles from './welcome.style'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
+import { FlatList, TouchableOpacity } from 'react-native'
 import { icons, SIZES } from '../../../constants'
 import { router } from 'expo-router'
 const jobTypes = ["Full-time", "Part-time", "Contractor"]

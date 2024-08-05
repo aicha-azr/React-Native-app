@@ -4,18 +4,15 @@ import { View, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
 import { COLORS } from '../../../constants'
 import useFetch from '../../../hook/useFetch';
-const Nearbyjobs = () => {
+import { useRouter } from 'expo-router'
+const Nearbyjobs = () => { 
+  const router = useRouter();
   const {data, isLoading, error} = useFetch('search',{
     query: 'Node.js developer in New-York,USA',
     num_page: 1
 
   })
   console.log(data);
-
-  const handleCardPress = (item) => {
-    router.push(`/job-details/${item.job_id}`);
-    setSelectedJob(item.job_id);
-  };
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -31,9 +28,9 @@ const Nearbyjobs = () => {
             <Text>Something went wrong</Text>
           ): (
             data?.map((job)=>(<NearbyJobCard
-            job={job}>
-            key={`nearby-job-${job?.job_id}`}
-              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
+            job={job}
+             key={`nearby-job-${job.job_id}`}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}>
             </NearbyJobCard>))
           )}
         </View>
